@@ -1,6 +1,8 @@
 import Data.List
 
 pembagi x n = (n `mod` x == 0)
+-- :t pembagi
+-- returns pembagi :: Integral a => a -> a -> Bool
 
 divisor n = [x | x <- [ 1 .. n], pembagi x n]
 -- pada mod digunakan tanda (`) bukan tanda petik satu (')
@@ -33,6 +35,8 @@ quicksort (x:xs) = (quicksort lesser) ++ [x] ++ (quicksort greater)
         greater = filter (>= x) xs
 
 -- setelah ini diketahui bahwa haskell case sensitive karena quickSort atas dan quicksort bawah berbeda
+-- :t quickSort
+-- returns quickSort :: Ord a => [a] -> [a]
 
 -- MERGE SORT coba di sini --
 
@@ -41,24 +45,35 @@ perm [] = [[]]
 
 perm ls = [x:ps | x <- ls, ps <- perm(ls \\ [x])]
 -- jalankan isi ls satu per satu dari depan, lalu permutasi sisanya
+-- :t perm
+-- perm :: Eq a => [a] -> [[a]]
 
 add [] [] = []
 
 add (a:as) (b:bs) = (a+b) : (add as bs)
+-- :t add
+-- returns add :: Num a => [a] -> [a] -> [a]
 
 -- List ++ List => List
 -- a : b => [a,b]
 
 fibs = 1 : 1 : add fibs (tail fibs)
+-- :t fibs
+-- returns fibs :: [Integer]
 
 -- fibs      =  1 1 2 3 5 8 13 21
 -- tail fibs =  1 2 3 5 8 13 21 
 
 takes n ls = [ls!!x | x <- [0..n-1]]
 -- membuat fungsi take sendiri karena pada saat pengerjaan lupa dengan fungsi take bawaan
+-- :t takes
+-- returns takes :: Int -> [a] -> [a]
 
 primes = sieve [2..]
   where sieve (x:xs) = x : [y| y <- xs, y `mod` x /= 0]
+
+-- :t primes
+-- returns primes :: [Integer]
 
 -- mencoba primes:
 tryPrime = takes 5 primes
