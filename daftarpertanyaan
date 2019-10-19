@@ -3,3 +3,4 @@ type
 monad
 permSplit
 hamming
+foldl/foldr

@@ -14,3 +14,19 @@ lengthFunc ls = sum(map (\x -> 1) ls)
 
 -- :t lengthFunc
 -- returns lengthFunc :: Num p => [a] -> p
+
+mysterious (x:xs) = map (+1) (map (+1) xs)
+-- menambahkan elemen pada list kecuali elemen pertama pada xs dengan 1 sebanyak dua kali.
+
+--iter 0 f x = (f x)
+
+--iter n f x = map (\s -> f(iter s-1 f x)) [n, n-1..1]
+--iter n f x = (iter n-1 f x) where n > 1
+--iter :: Integral n => n -> ( a -> a ) -> a -> a 
+iter 0 f x = x
+
+iter n f x = f (iter (n-1) f x)
+
+mystery = (\n -> iter n succ) 2 3
+-- mystery equals to iter 2 (+1) 3 
+
