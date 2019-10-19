@@ -30,3 +30,7 @@ iter n f x = f (iter (n-1) f x)
 mystery = (\n -> iter n succ) 2 3
 -- mystery equals to iter 2 (+1) 3 
 
+-- [ x+1 | x <- xs ]
+hof1a (x:xs) = map (+1) (x:xs) 
+
+-- [ x+y | x <- xs, y <- ys ]

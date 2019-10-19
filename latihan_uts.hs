@@ -45,3 +45,12 @@ foldExpr op init_ (x:xs) = x `op` (foldExpr op init_ xs)
 --  evaluate (subst "x" (C 5) (V "x" :+ (C 9) :+ (C 7))
 -- evaluate ((C 5) :+ (C 9) :+ (C 7))
 -- 21.0
+
+-- evaluate menggunakan fold
+--data Expr = Float | Float :+ Float | Float :- Float | Float :* Float | Float :/ Float | V String | Let String Expr Expr deriving Show
+
+--evaluateFold :: Expr -> Float
+--evaluateFold (n1 :+ n2) = foldl (+) 0 ([n1] ++ [n2])
+--evaluateFold (n1 :- n2) = foldr (-) 0 ([n1] ++ [n2])
+--evaluateFold (n1 :* n2) = foldl (*) 1 ([n1] ++ [n2])
+--evaluateFold (n1 :/ n2) = foldr (/) 1 ([n1] ++ [n2])
